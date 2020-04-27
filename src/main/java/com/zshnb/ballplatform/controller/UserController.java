@@ -1,6 +1,7 @@
 package com.zshnb.ballplatform.controller;
 
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -16,5 +17,6 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+	@PostMapping("/register")
+	public
 }
