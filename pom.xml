@@ -58,6 +58,5 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.22</version>
     </dependency>
-
   </dependencies>
 </project>
