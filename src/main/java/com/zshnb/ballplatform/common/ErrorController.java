@@ -1,15 +1,20 @@
 package com.zshnb.ballplatform.common;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-@ResponseBody
-public class ErrorController {
+public class ErrorController extends ResponseEntityExceptionHandler {
+
     @ExceptionHandler(RuntimeException.class)
-    public Response<String> handler(RuntimeException e) {
-        return Response.error(e.getMessage());
+    public ResponseEntity<Object> handler(Exception e, WebRequest webRequest) {
+    	return handleExceptionInternal(e, Response.error(e.getMessage()),
+		    HttpHeaders.EMPTY, HttpStatus.BAD_REQUEST, webRequest);
     }
 
 }

@@ -1,0 +1,3 @@
+- [x] /front/user/register
+- [x] /front/user/login
+- [x] /front/user/update-info
