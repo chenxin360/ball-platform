@@ -3,8 +3,9 @@ package com.zshnb.ballplatform.controller.front;
 
 import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.User;
+import com.zshnb.ballplatform.request.LoginRequest;
 import com.zshnb.ballplatform.request.RegisterRequest;
-import com.zshnb.ballplatform.service.IUserService;
+import com.zshnb.ballplatform.service.inter.IUserService;
 import com.zshnb.ballplatform.validation.UserValidation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,11 @@ public class UserController {
 		BeanUtils.copyProperties(request, user);
 		userService.save(user);
 		return Response.ok();
+	}
+
+	@PostMapping("/login")
+	public Response<User> login(@RequestBody LoginRequest request) {
+		User user = userService.login(request);
+		return Response.ok(user);
 	}
 }

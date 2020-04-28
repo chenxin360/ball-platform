@@ -1,4 +1,4 @@
-package com.zshnb.ballplatform.service;
+package com.zshnb.ballplatform.service.inter;
 
 import com.zshnb.ballplatform.entity.SportTrack;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zsh
- * @since 2020-04-27
+ * @since 2020-04-28
  */
 public interface ISportTrackService extends IService<SportTrack> {
 

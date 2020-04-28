@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zsh
- * @since 2020-04-27
+ * @since 2020-04-28
  */
 public class Activity extends Model<Activity> {
 
@@ -29,6 +29,8 @@ public class Activity extends Model<Activity> {
     private Integer personCount;
 
     private String excel;
+
+    private Integer sportItemId;
 
     public Integer getId() {
         return id;
@@ -72,6 +74,13 @@ public class Activity extends Model<Activity> {
     public void setExcel(String excel) {
         this.excel = excel;
     }
+    public Integer getSportItemId() {
+        return sportItemId;
+    }
+
+    public void setSportItemId(Integer sportItemId) {
+        this.sportItemId = sportItemId;
+    }
 
     @Override
     protected Serializable pkVal() {
@@ -87,6 +96,7 @@ public class Activity extends Model<Activity> {
             ", phone=" + phone +
             ", personCount=" + personCount +
             ", excel=" + excel +
+            ", sportItemId=" + sportItemId +
         "}";
     }
 }

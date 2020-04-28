@@ -9,7 +9,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zsh
- * @since 2020-04-27
+ * @since 2020-04-28
  */
 public class Coach extends Model<Coach> {
 
@@ -19,7 +19,7 @@ public class Coach extends Model<Coach> {
 
     private String name;
 
-    private String sportItem;
+    private Integer sportItemId;
 
     private String sportLevel;
 
@@ -43,12 +43,12 @@ public class Coach extends Model<Coach> {
     public void setName(String name) {
         this.name = name;
     }
-    public String getSportItem() {
-        return sportItem;
+    public Integer getSportItemId() {
+        return sportItemId;
     }
 
-    public void setSportItem(String sportItem) {
-        this.sportItem = sportItem;
+    public void setSportItemId(Integer sportItemId) {
+        this.sportItemId = sportItemId;
     }
     public String getSportLevel() {
         return sportLevel;
@@ -89,7 +89,7 @@ public class Coach extends Model<Coach> {
         return "Coach{" +
             "id=" + id +
             ", name=" + name +
-            ", sportItem=" + sportItem +
+            ", sportItemId=" + sportItemId +
             ", sportLevel=" + sportLevel +
             ", price=" + price +
             ", description=" + description +

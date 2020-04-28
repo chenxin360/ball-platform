@@ -6,7 +6,7 @@
     <resultMap id="BaseResultMap" type="com.zshnb.ballplatform.entity.Coach">
         <result column="id" property="id" />
         <result column="name" property="name" />
-        <result column="sport_item" property="sportItem" />
+        <result column="sport_item_id" property="sportItemId" />
         <result column="sport_level" property="sportLevel" />
         <result column="price" property="price" />
         <result column="description" property="description" />

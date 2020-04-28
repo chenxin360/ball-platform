@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zsh
- * @since 2020-04-27
+ * @since 2020-04-28
  */
 public class Message extends Model<Message> {
 

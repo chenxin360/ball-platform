@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author zsh
- * @since 2020-04-27
+ * @since 2020-04-28
  */
 public class Companion extends Model<Companion> {
 
@@ -21,7 +21,7 @@ public class Companion extends Model<Companion> {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private String sportItem;
+    private Integer sportItemId;
 
     private String sportLevel;
 
@@ -38,12 +38,12 @@ public class Companion extends Model<Companion> {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getSportItem() {
-        return sportItem;
+    public Integer getSportItemId() {
+        return sportItemId;
     }
 
-    public void setSportItem(String sportItem) {
-        this.sportItem = sportItem;
+    public void setSportItemId(Integer sportItemId) {
+        this.sportItemId = sportItemId;
     }
     public String getSportLevel() {
         return sportLevel;
@@ -83,7 +83,7 @@ public class Companion extends Model<Companion> {
     public String toString() {
         return "Companion{" +
             "id=" + id +
-            ", sportItem=" + sportItem +
+            ", sportItemId=" + sportItemId +
             ", sportLevel=" + sportLevel +
             ", sportSiteId=" + sportSiteId +
             ", sex=" + sex +

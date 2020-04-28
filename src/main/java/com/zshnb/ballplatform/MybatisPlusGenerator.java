@@ -84,6 +84,8 @@ public class MybatisPlusGenerator {
 		// 包配置
 		PackageConfig pc = new PackageConfig();
 		pc.setParent("com.zshnb.ballplatform");
+		pc.setService("service.inter");
+		pc.setServiceImpl("service");
 //        pc.setModuleName("test");
 		mpg.setPackageInfo(pc);
 

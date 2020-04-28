@@ -5,7 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.zshnb.ballplatform.entity.Companion">
         <id column="id" property="id" />
-        <result column="sport_item" property="sportItem" />
+        <result column="sport_item_id" property="sportItemId" />
         <result column="sport_level" property="sportLevel" />
         <result column="sport_site_id" property="sportSiteId" />
         <result column="sex" property="sex" />
