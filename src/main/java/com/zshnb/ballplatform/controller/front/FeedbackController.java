@@ -1,4 +1,4 @@
-package com.zshnb.ballplatform.controller;
+package com.zshnb.ballplatform.controller.front;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;

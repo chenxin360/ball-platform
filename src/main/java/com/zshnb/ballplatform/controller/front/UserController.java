@@ -1,4 +1,4 @@
-package com.zshnb.ballplatform.controller;
+package com.zshnb.ballplatform.controller.front;
 
 
 import com.zshnb.ballplatform.common.Response;
@@ -6,15 +6,11 @@ import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.request.RegisterRequest;
 import com.zshnb.ballplatform.service.IUserService;
 import com.zshnb.ballplatform.validation.UserValidation;
-import java.lang.reflect.InvocationTargetException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

@@ -1,4 +1,4 @@
-package com.zshnb.ballplatform.controller;
+package com.zshnb.ballplatform.controller.front;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @since 2020-04-27
  */
 @Controller
-@RequestMapping("/bill")
-public class BillController {
+@RequestMapping("/sportSiteOrder")
+public class SportSiteOrderController {
 
 }
