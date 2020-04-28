@@ -2,9 +2,13 @@ package com.zshnb.ballplatform.controller.front;
 
 
 import com.zshnb.ballplatform.common.Response;
+import com.zshnb.ballplatform.dto.UserDto;
+import com.zshnb.ballplatform.entity.SportItem;
 import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.request.LoginRequest;
 import com.zshnb.ballplatform.request.RegisterRequest;
+import com.zshnb.ballplatform.request.UpdateInfoRequest;
+import com.zshnb.ballplatform.service.inter.ISportItemService;
 import com.zshnb.ballplatform.service.inter.IUserService;
 import com.zshnb.ballplatform.validation.UserValidation;
 import org.springframework.beans.BeanUtils;
@@ -31,6 +35,9 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 
+	@Autowired
+	private ISportItemService sportItemService;
+
 	@PostMapping("/register")
 	public Response<String> register(@RequestBody RegisterRequest request) {
 		userValidation.validate(request.getUsername());
@@ -41,8 +48,20 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public Response<User> login(@RequestBody LoginRequest request) {
+	public Response<UserDto> login(@RequestBody LoginRequest request) {
 		User user = userService.login(request);
+		SportItem sportItem = sportItemService.getById(user.getSportItemId());
+		UserDto userDto = new UserDto();
+		userDto.setSportItemName(sportItem.getName());
+		BeanUtils.copyProperties(user, userDto);
+		return Response.ok(userDto);
+	}
+
+	@PostMapping("/update-info")
+	public Response<User> updateInfo(@RequestBody UpdateInfoRequest request) {
+		User user = userService.getById(request.getId());
+		BeanUtils.copyProperties(request, user);
+		userService.updateById(user);
 		return Response.ok(user);
 	}
 }

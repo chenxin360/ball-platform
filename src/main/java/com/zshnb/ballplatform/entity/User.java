@@ -24,7 +24,7 @@ public class User extends Model<User> {
 
     private String password;
 
-    private String sportItem;
+    private Integer sportItemId;
 
     private String sportLevel;
 
@@ -37,6 +37,14 @@ public class User extends Model<User> {
     private String description;
 
     private Double money;
+
+    public Integer getSportItemId() {
+        return sportItemId;
+    }
+
+    public void setSportItemId(Integer sportItemId) {
+        this.sportItemId = sportItemId;
+    }
 
     public Integer getId() {
         return id;
@@ -59,13 +67,7 @@ public class User extends Model<User> {
     public void setPassword(String password) {
         this.password = password;
     }
-    public String getSportItem() {
-        return sportItem;
-    }
 
-    public void setSportItem(String sportItem) {
-        this.sportItem = sportItem;
-    }
     public String getSportLevel() {
         return sportLevel;
     }
@@ -120,7 +122,7 @@ public class User extends Model<User> {
             "id=" + id +
             ", username=" + username +
             ", password=" + password +
-            ", sportItem=" + sportItem +
+            ", sportItemId=" + sportItemId +
             ", sportLevel=" + sportLevel +
             ", sex=" + sex +
             ", age=" + age +

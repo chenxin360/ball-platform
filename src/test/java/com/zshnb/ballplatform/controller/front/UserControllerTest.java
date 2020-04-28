@@ -12,7 +12,7 @@ public class UserControllerTest extends BaseTest {
 	@Test
 	public void testRegister() {
 		RegisterRequest request = new RegisterRequest();
-		request.setUsername("abc");
+		request.setUsername("zsh");
 		request.setPassword("abc");
 		ResponseEntity<Response> responseEntity = restTemplate.postForEntity("/front/user/register", request, Response.class);
 		assert responseEntity.getStatusCode().is2xxSuccessful();
@@ -29,4 +29,6 @@ public class UserControllerTest extends BaseTest {
 		responseEntity = restTemplate.postForEntity("/front/user/login", request, Response.class);
 		assert responseEntity.getBody().getCode() == 400;
 	}
+
+
 }
