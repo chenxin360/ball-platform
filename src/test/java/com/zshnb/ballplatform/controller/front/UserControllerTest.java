@@ -6,25 +6,22 @@ import com.zshnb.ballplatform.dto.UserDto;
 import com.zshnb.ballplatform.request.LoginRequest;
 import com.zshnb.ballplatform.request.RegisterRequest;
 import com.zshnb.ballplatform.request.UpdateInfoRequest;
+import com.zshnb.ballplatform.request.UpdatePasswordRequest;
 import java.lang.reflect.Type;
 import org.junit.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserControllerTest extends BaseTest {
 	private ResponseEntity<Response> register() {
-		RegisterRequest request = new RegisterRequest();
-		request.setUsername("zsh");
-		request.setPassword("abc");
-		return restTemplate.postForEntity("/front/user/register", request, Response.class);
+		return restTemplate.postForEntity("/front/user/register", registerRequest, Response.class);
 	}
 
-	private ResponseEntity<Response<UserDto>> login() {
-		LoginRequest request = new LoginRequest();
-		request.setUsername("zsh");
-		request.setPassword("abc");
+	private ResponseEntity<Response<UserDto>> login(LoginRequest request) {
 		ParameterizedTypeReference<Response<UserDto>> ref = new ParameterizedTypeReference<Response<UserDto>>() {
 			@Override
 			public Type getType() {
@@ -37,27 +34,24 @@ public class UserControllerTest extends BaseTest {
 
 	@Test
 	public void testRegister() {
-		ResponseEntity responseEntity = register();
+		ResponseEntity<Response> responseEntity = register();
 		assert responseEntity.getStatusCode().is2xxSuccessful();
 	}
 
 	@Test
 	public void testLogin() {
 		register();
-		ResponseEntity responseEntity = login();
+		ResponseEntity<Response<UserDto>> responseEntity = login(loginRequest);
 		assert responseEntity.getStatusCode().is2xxSuccessful();
-
-		LoginRequest request = new LoginRequest();
-		request.setUsername("aaa");
-		request.setPassword("aaa");
-		responseEntity = restTemplate.postForEntity("/front/user/login", request, Response.class);
+		loginRequest.setPassword("aaa");
+		responseEntity = login(loginRequest);
 		assert responseEntity.getStatusCode().is4xxClientError();
 	}
 
 	@Test
 	public void testUpdateInfo() {
 		register();
-		ResponseEntity<Response<UserDto>> loginResponse = login();
+		ResponseEntity<Response<UserDto>> loginResponse = login(loginRequest);
 		UserDto dto = loginResponse.getBody().getData();
 
 		UpdateInfoRequest updateInfoRequest = new UpdateInfoRequest();
@@ -69,9 +63,29 @@ public class UserControllerTest extends BaseTest {
 			updateInfoRequest, Response.class);
 		assert updateInfoResponse.getStatusCode().is2xxSuccessful();
 
-		loginResponse = login();
+		loginResponse = login(loginRequest);
 		dto = loginResponse.getBody().getData();
 		assert dto.getAge().equals(19);
 		assert dto.getSex().equals("man");
+	}
+
+	@Test
+	public void testUpdatePassword() {
+		register();
+		ResponseEntity<Response<UserDto>> loginResponse = login(loginRequest);
+		UserDto dto = loginResponse.getBody().getData();
+
+		UpdatePasswordRequest updatePasswordRequest = new UpdatePasswordRequest();
+		updatePasswordRequest.setUsername(dto.getUsername());
+		updatePasswordRequest.setPassword("new");
+		restTemplate.postForEntity("/front/user/update-password", updatePasswordRequest, Response.class);
+
+		loginResponse = login(loginRequest);
+		assert loginResponse.getStatusCode().is4xxClientError();
+
+		loginRequest.setPassword("new");
+		loginResponse = login(loginRequest);
+		assert loginResponse.getStatusCode().is2xxSuccessful();
+
 	}
 }

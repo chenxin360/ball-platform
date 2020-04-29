@@ -8,6 +8,7 @@ import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.request.LoginRequest;
 import com.zshnb.ballplatform.request.RegisterRequest;
 import com.zshnb.ballplatform.request.UpdateInfoRequest;
+import com.zshnb.ballplatform.request.UpdatePasswordRequest;
 import com.zshnb.ballplatform.service.inter.ISportItemService;
 import com.zshnb.ballplatform.service.inter.IUserService;
 import com.zshnb.ballplatform.validation.UserValidation;
@@ -63,5 +64,11 @@ public class UserController {
 		BeanUtils.copyProperties(request, user);
 		userService.updateById(user);
 		return Response.ok(user);
+	}
+
+	@PostMapping("/update-password")
+	public Response<String> updatePassword(@RequestBody UpdatePasswordRequest request) {
+		userService.updatePassword(request);
+		return Response.ok();
 	}
 }

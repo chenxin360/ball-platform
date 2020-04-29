@@ -5,7 +5,9 @@ import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zshnb.ballplatform.request.LoginRequest;
+import com.zshnb.ballplatform.request.UpdatePasswordRequest;
 import com.zshnb.ballplatform.service.inter.IUserService;
+import javax.jws.soap.SOAPBinding.Use;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -28,5 +30,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 		User user = getOne(wrapper);
 		Assert.notNull(user, "用户名或密码错误");
 		return user;
+	}
+
+	@Override
+	public void updatePassword(UpdatePasswordRequest request) {
+		QueryWrapper<User> wrapper = new QueryWrapper<>();
+		wrapper.eq("username", request.getUsername());
+		User user = getOne(wrapper);
+		user.setPassword(request.getPassword());
+		updateById(user);
 	}
 }

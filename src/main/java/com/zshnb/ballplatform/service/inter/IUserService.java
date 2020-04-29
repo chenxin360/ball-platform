@@ -3,6 +3,7 @@ package com.zshnb.ballplatform.service.inter;
 import com.zshnb.ballplatform.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.LoginRequest;
+import com.zshnb.ballplatform.request.UpdatePasswordRequest;
 
 /**
  * <p>
@@ -14,4 +15,6 @@ import com.zshnb.ballplatform.request.LoginRequest;
  */
 public interface IUserService extends IService<User> {
 	User login(LoginRequest request);
+
+	void updatePassword(UpdatePasswordRequest request);
 }
