@@ -1,3 +1,6 @@
 - [x] /front/user/register
 - [x] /front/user/login
 - [x] /front/user/update-info
+- [x] /front/user/update-password
+- [x] /front/bill/add
+- [x] /front/bill/list

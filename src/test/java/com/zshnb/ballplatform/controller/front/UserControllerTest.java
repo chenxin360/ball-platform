@@ -4,7 +4,6 @@ import com.zshnb.ballplatform.BaseTest;
 import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.dto.UserDto;
 import com.zshnb.ballplatform.request.LoginRequest;
-import com.zshnb.ballplatform.request.RegisterRequest;
 import com.zshnb.ballplatform.request.UpdateInfoRequest;
 import com.zshnb.ballplatform.request.UpdatePasswordRequest;
 import java.lang.reflect.Type;
@@ -17,11 +16,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserControllerTest extends BaseTest {
-	private ResponseEntity<Response> register() {
+	public ResponseEntity<Response> register() {
 		return restTemplate.postForEntity("/front/user/register", registerRequest, Response.class);
 	}
 
-	private ResponseEntity<Response<UserDto>> login(LoginRequest request) {
+	public ResponseEntity<Response<UserDto>> login(LoginRequest request) {
 		ParameterizedTypeReference<Response<UserDto>> ref = new ParameterizedTypeReference<Response<UserDto>>() {
 			@Override
 			public Type getType() {

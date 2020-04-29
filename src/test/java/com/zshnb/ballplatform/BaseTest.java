@@ -1,9 +1,9 @@
 package com.zshnb.ballplatform;
 
-import com.zshnb.ballplatform.common.Response;
+import com.zshnb.ballplatform.entity.User;
+import com.zshnb.ballplatform.mapper.UserMapper;
 import com.zshnb.ballplatform.request.LoginRequest;
 import com.zshnb.ballplatform.request.RegisterRequest;
-import java.lang.reflect.Type;
 import java.sql.SQLException;
 import org.junit.After;
 import org.junit.Before;
@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,6 +23,10 @@ public class BaseTest {
 	@Autowired
 	private TruncateService truncateService;
 
+	@Autowired
+	private UserMapper userMapper;
+
+	protected int userId = 1;
 	protected String username = "zsh";
 	protected String password = "password";
 	public RegisterRequest registerRequest;
@@ -37,6 +40,12 @@ public class BaseTest {
 		loginRequest = new LoginRequest();
 		loginRequest.setUsername(username);
 		loginRequest.setPassword(password);
+		User user = new User();
+		user.setId(1);
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setMoney(10.0);
+		userMapper.insert(user);
 	}
 
 	@After
