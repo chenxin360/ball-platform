@@ -4,3 +4,5 @@
 - [x] /front/user/update-password
 - [x] /front/bill/add
 - [x] /front/bill/list
+- [x] /front/companion/add
+- [x] /front/companion/list

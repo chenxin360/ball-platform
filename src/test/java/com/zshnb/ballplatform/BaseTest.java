@@ -1,6 +1,8 @@
 package com.zshnb.ballplatform;
 
+import com.zshnb.ballplatform.entity.SportItem;
 import com.zshnb.ballplatform.entity.User;
+import com.zshnb.ballplatform.mapper.SportItemMapper;
 import com.zshnb.ballplatform.mapper.UserMapper;
 import com.zshnb.ballplatform.request.LoginRequest;
 import com.zshnb.ballplatform.request.RegisterRequest;
@@ -26,7 +28,11 @@ public class BaseTest {
 	@Autowired
 	private UserMapper userMapper;
 
+	@Autowired
+	private SportItemMapper sportItemMapper;
+
 	protected int userId = 1;
+	protected int sportItemId = 1;
 	protected String username = "zsh";
 	protected String password = "password";
 	public RegisterRequest registerRequest;
@@ -46,6 +52,11 @@ public class BaseTest {
 		user.setPassword(password);
 		user.setMoney(10.0);
 		userMapper.insert(user);
+
+		SportItem sportItem = new SportItem();
+		sportItem.setId(1);
+		sportItem.setName("篮球");
+		sportItemMapper.insert(sportItem);
 	}
 
 	@After
