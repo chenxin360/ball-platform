@@ -18,4 +18,6 @@ public interface ICompanionService extends IService<Companion> {
 	void uploadCompanion(UploadCompanionRequest request);
 
 	List<Companion> listCompanion(ListCompanionRequest request);
+
+	void deleteCompanion(Integer id);
 }

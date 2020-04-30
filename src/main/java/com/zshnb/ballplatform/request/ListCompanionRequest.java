@@ -11,7 +11,7 @@ public class ListCompanionRequest extends PageRequest{
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	private LocalDateTime startAt = LocalDateTime.MIN;
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-	private LocalDateTime endAt = LocalDateTime.MAX;
+	private LocalDateTime endAt = LocalDateTime.now();
 
 	public int getUserId() {
 		return userId;

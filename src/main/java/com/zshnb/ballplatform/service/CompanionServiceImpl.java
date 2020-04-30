@@ -12,6 +12,7 @@ import com.zshnb.ballplatform.service.inter.ICompanionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,6 +25,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CompanionServiceImpl extends ServiceImpl<CompanionMapper, Companion> implements ICompanionService {
+	@Autowired
+	private CompanionMapper companionMapper;
 
 	@Override
 	public void uploadCompanion(UploadCompanionRequest request) {
@@ -48,5 +51,10 @@ public class CompanionServiceImpl extends ServiceImpl<CompanionMapper, Companion
 		wrapper.and(i -> i.between("time", request.getStartAt(), request.getEndAt()));
 		Page<Companion> page = new Page<>(request.getPageNumber(), request.getPageSize());
 		return page(page, wrapper).getRecords();
+	}
+
+	@Override
+	public void deleteCompanion(Integer id) {
+		companionMapper.deleteById(id);
 	}
 }

@@ -6,3 +6,4 @@
 - [x] /front/bill/list
 - [x] /front/companion/add
 - [x] /front/companion/list
+- [x] /front/companion/delete
