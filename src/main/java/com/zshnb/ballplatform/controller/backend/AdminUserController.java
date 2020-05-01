@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/backend/user")
-public class UserController {
+public class AdminUserController {
 	@Autowired
 	private IUserService userService;
 

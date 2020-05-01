@@ -1,9 +1,12 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.entity.Feedback;
 import com.zshnb.ballplatform.mapper.FeedbackMapper;
+import com.zshnb.ballplatform.request.PageRequest;
 import com.zshnb.ballplatform.service.inter.IFeedbackService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -20,5 +23,10 @@ public class FeedbackServiceImpl extends ServiceImpl<FeedbackMapper, Feedback> i
 	@Override
 	public void add(Feedback feedback) {
 		save(feedback);
+	}
+
+	@Override
+	public List<Feedback> listFeedbacks(PageRequest request) {
+		return page(new Page<>(request.getPageNumber(), request.getPageSize())).getRecords();
 	}
 }

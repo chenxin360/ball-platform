@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserControllerTest extends BaseTest {
+public class AdminUserControllerTest extends BaseTest {
 	public ResponseEntity<Response> register() {
 		return restTemplate.postForEntity("/front/user/register", registerRequest, Response.class);
 	}

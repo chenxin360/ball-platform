@@ -2,6 +2,8 @@ package com.zshnb.ballplatform.service.inter;
 
 import com.zshnb.ballplatform.entity.Feedback;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zshnb.ballplatform.request.PageRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IFeedbackService extends IService<Feedback> {
 	void add(Feedback feedback);
+
+	List<Feedback> listFeedbacks(PageRequest request);
 }

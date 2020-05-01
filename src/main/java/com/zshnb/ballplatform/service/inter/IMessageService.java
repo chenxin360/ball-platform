@@ -2,6 +2,7 @@ package com.zshnb.ballplatform.service.inter;
 
 import com.zshnb.ballplatform.entity.Message;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zshnb.ballplatform.request.ListMessageRequest;
 import com.zshnb.ballplatform.request.PageRequest;
 import java.util.List;
 
@@ -14,5 +15,7 @@ import java.util.List;
  * @since 2020-04-28
  */
 public interface IMessageService extends IService<Message> {
-	List<Message> listMessages(PageRequest request);
+	List<Message> listMessages(ListMessageRequest request);
+
+	void sendMessage(Message message);
 }

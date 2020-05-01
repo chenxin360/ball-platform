@@ -50,3 +50,6 @@
 - [x] GET /backend/activity/{id}
 - [x] DELETE /backend/activity/{id}
 - [x] /backend/activity/list
+- [x] /backend/feedback/list
+- [x] /backend/send-message
+- [x] /backend/login

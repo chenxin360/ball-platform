@@ -1,8 +1,10 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.entity.Message;
 import com.zshnb.ballplatform.mapper.MessageMapper;
+import com.zshnb.ballplatform.request.ListMessageRequest;
 import com.zshnb.ballplatform.request.PageRequest;
 import com.zshnb.ballplatform.service.inter.IMessageService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -21,7 +23,14 @@ import org.springframework.stereotype.Service;
 public class MessageServiceImpl extends ServiceImpl<MessageMapper, Message> implements IMessageService {
 
 	@Override
-	public List<Message> listMessages(PageRequest request) {
-		return page(new Page<>(request.getPageNumber(), request.getPageSize())).getRecords();
+	public List<Message> listMessages(ListMessageRequest request) {
+		QueryWrapper<Message> wrapper = new QueryWrapper<>();
+		wrapper.eq("user_id", request.getUserId());
+		return page(new Page<>(request.getPageNumber(), request.getPageSize()), wrapper).getRecords();
+	}
+
+	@Override
+	public void sendMessage(Message message) {
+		save(message);
 	}
 }

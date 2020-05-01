@@ -3,6 +3,7 @@ package com.zshnb.ballplatform.controller.front;
 
 import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Message;
+import com.zshnb.ballplatform.request.ListMessageRequest;
 import com.zshnb.ballplatform.request.PageRequest;
 import com.zshnb.ballplatform.service.inter.IMessageService;
 import java.util.List;
@@ -29,7 +30,7 @@ public class MessageController {
 	private IMessageService messageService;
 
 	@PostMapping("/list")
-	public Response<List<Message>> list(@RequestBody PageRequest request) {
+	public Response<List<Message>> list(@RequestBody ListMessageRequest request) {
 		return Response.ok(messageService.listMessages(request));
 	}
 }
