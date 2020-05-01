@@ -1,9 +1,14 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.entity.Coach;
+import com.zshnb.ballplatform.entity.SportItem;
 import com.zshnb.ballplatform.entity.SportSite;
 import com.zshnb.ballplatform.mapper.SportSiteMapper;
 import com.zshnb.ballplatform.request.backend.ListCoachRequest;
+import com.zshnb.ballplatform.request.backend.ListSportItemRequest;
+import com.zshnb.ballplatform.request.backend.ListSportSiteRequest;
 import com.zshnb.ballplatform.service.inter.ISportSiteService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
@@ -20,28 +25,32 @@ import org.springframework.stereotype.Service;
 @Service
 public class SportSiteServiceImpl extends ServiceImpl<SportSiteMapper, SportSite> implements ISportSiteService {
 
-	@Override
-	public void add(Coach coach) {
-
+	public void add(SportSite site) {
+		save(site);
 	}
 
 	@Override
-	public void update(Coach coach) {
-
+	public void update(SportSite site) {
+		updateById(site);
 	}
 
 	@Override
-	public Coach detail(int id) {
-		return null;
+	public SportSite detail(int id) {
+		return getById(id);
 	}
 
 	@Override
 	public void delete(int id) {
-
+		getBaseMapper().deleteById(id);
 	}
 
 	@Override
-	public List<Coach> listCoaches(ListCoachRequest request) {
-		return null;
+	public List<SportSite> listSportSites(ListSportSiteRequest request) {
+		QueryWrapper<SportSite> wrapper = new QueryWrapper<>();
+		if (!request.getName().isEmpty()) {
+			wrapper.eq("name", request.getName());
+		}
+		Page<SportSite> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page, wrapper).getRecords();
 	}
 }

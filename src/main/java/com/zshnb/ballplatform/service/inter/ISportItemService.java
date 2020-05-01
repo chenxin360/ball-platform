@@ -4,6 +4,7 @@ import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.SportItem;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.backend.ListCoachRequest;
+import com.zshnb.ballplatform.request.backend.ListSportItemRequest;
 import java.util.List;
 
 /**
@@ -15,14 +16,14 @@ import java.util.List;
  * @since 2020-04-28
  */
 public interface ISportItemService extends IService<SportItem> {
-	void add(Coach coach);
+	void add(SportItem item);
 
-	void update(Coach coach);
+	void update(SportItem item);
 
-	Coach detail(int id);
+	SportItem detail(int id);
 
 	void delete(int id);
 
-	List<Coach> listCoaches(ListCoachRequest request);
+	List<SportItem> listSportItems(ListSportItemRequest request);
 
 }

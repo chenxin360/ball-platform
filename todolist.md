@@ -9,6 +9,7 @@
 - [x] /front/companion/list
 - [x] /front/companion/delete
 - [x] /front/coach/list
+- [x] /front/order/coach/list
 
 ### admin
 - [x] /backend/coach/add
@@ -19,3 +20,13 @@
 - [x] GET /backend/user/{id}
 - [x] DELETE /backend/user/{id}
 - [x] /backend/user/list
+- [x] /backend/sport-item/add
+- [x] /backend/sport-item/update
+- [x] GET /backend/sport-item/{id}
+- [x] DELETE /backend/sport-item/{id}
+- [x] /backend/sport-item/list
+- [x] /backend/sport-site/add
+- [x] /backend/sport-site/update
+- [x] GET /backend/sport-site/{id}
+- [x] DELETE /backend/sport-site/{id}
+- [x] /backend/sport-site/list
