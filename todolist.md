@@ -7,3 +7,10 @@
 - [x] /front/companion/add
 - [x] /front/companion/list
 - [x] /front/companion/delete
+
+
+- [x] /backend/coach/add
+- [x] /backend/coach/update
+- [x] /backend/coach/{id}
+- [x] /backend/coach/{id}
+- [x] /backend/coach/list
