@@ -51,9 +51,9 @@ public class UserController {
 	@PostMapping("/login")
 	public Response<UserDto> login(@RequestBody LoginRequest request) {
 		User user = userService.login(request);
-//		SportItem sportItem = sportItemService.getById(user.getSportItemId());
+		SportItem sportItem = sportItemService.getById(user.getSportItemId());
 		UserDto userDto = new UserDto();
-//		userDto.setSportItemName(sportItem.getName());
+		userDto.setSportItemName(sportItem.getName());
 		BeanUtils.copyProperties(user, userDto);
 		return Response.ok(userDto);
 	}

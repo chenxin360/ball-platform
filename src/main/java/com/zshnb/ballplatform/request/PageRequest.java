@@ -1,6 +1,6 @@
 package com.zshnb.ballplatform.request;
 
-public abstract class PageRequest {
+public class PageRequest {
 	int pageNumber = 1;
 
 	int pageSize = 20;

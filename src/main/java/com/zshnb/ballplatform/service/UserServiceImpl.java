@@ -1,12 +1,17 @@
 package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.mapper.UserMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zshnb.ballplatform.request.LoginRequest;
+import com.zshnb.ballplatform.request.PageRequest;
 import com.zshnb.ballplatform.request.UpdatePasswordRequest;
+import com.zshnb.ballplatform.request.backend.ListCoachRequest;
 import com.zshnb.ballplatform.service.inter.IUserService;
+import java.util.List;
 import javax.jws.soap.SOAPBinding.Use;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -39,5 +44,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 		User user = getOne(wrapper);
 		user.setPassword(request.getPassword());
 		updateById(user);
+	}
+
+	@Override
+	public User detail(int id) {
+		return getById(id);
+	}
+
+	@Override
+	public void delete(int id) {
+		getBaseMapper().deleteById(id);
+	}
+
+	@Override
+	public List<User> listCoaches(PageRequest request) {
+		Page<User> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page).getRecords();
 	}
 }
