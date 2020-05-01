@@ -29,7 +29,7 @@ public class SportSiteOrder extends Model<SportSiteOrder> {
 
     private Double price;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     private Integer deleted;
 

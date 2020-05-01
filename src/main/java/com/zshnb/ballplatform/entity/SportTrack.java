@@ -33,7 +33,7 @@ public class SportTrack extends Model<SportTrack> {
 
     private String sleepStatus;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     public Integer getId() {
         return id;

@@ -7,6 +7,8 @@ import com.zshnb.ballplatform.request.ListCoachRequest;
 import com.zshnb.ballplatform.service.inter.ICoachService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +33,10 @@ public class CoachController {
 	@PostMapping("/list")
 	public Response<List<Coach>> list(@RequestBody ListCoachRequest request) {
 		return Response.ok(coachService.listCoaches(request));
+	}
+
+	@GetMapping("/{id}")
+	public Response<Coach> detail(@PathVariable int id) {
+		return Response.ok(coachService.detail(id));
 	}
 }

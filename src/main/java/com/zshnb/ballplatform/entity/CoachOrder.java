@@ -29,7 +29,7 @@ public class CoachOrder extends Model<CoachOrder> {
 
     private Double price;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     private Integer deleted;
 

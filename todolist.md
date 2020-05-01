@@ -10,6 +10,12 @@
 - [x] /front/companion/delete
 - [x] /front/coach/list
 - [x] /front/order/coach/list
+- [x] /front/order/coach/{id}
+- [x] /front/order/sport-site/list
+- [x] /front/order/{type}/{id}
+- [x] /front/order/coach
+- [x] /front/order/sport-site
+
 
 ### admin
 - [x] /backend/coach/add

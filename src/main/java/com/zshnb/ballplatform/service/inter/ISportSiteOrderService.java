@@ -2,6 +2,9 @@ package com.zshnb.ballplatform.service.inter;
 
 import com.zshnb.ballplatform.entity.SportSiteOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zshnb.ballplatform.request.AddSportSiteOrderRequest;
+import com.zshnb.ballplatform.request.PageRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -12,6 +15,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-04-28
  */
 public interface ISportSiteOrderService extends IService<SportSiteOrder> {
+	List<SportSiteOrder> listOrders(PageRequest request);
 
+	void cancel(int id);
 
+	void add(AddSportSiteOrderRequest request);
 }

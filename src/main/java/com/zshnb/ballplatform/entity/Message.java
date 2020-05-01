@@ -25,7 +25,7 @@ public class Message extends Model<Message> {
 
     private String content;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     public Integer getId() {
         return id;

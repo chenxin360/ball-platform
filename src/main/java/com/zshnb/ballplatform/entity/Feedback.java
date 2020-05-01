@@ -23,7 +23,7 @@ public class Feedback extends Model<Feedback> {
 
     private String content;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     private Integer userId;
 

@@ -1,9 +1,14 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.entity.SportSiteOrder;
 import com.zshnb.ballplatform.mapper.SportSiteOrderMapper;
+import com.zshnb.ballplatform.request.AddSportSiteOrderRequest;
+import com.zshnb.ballplatform.request.PageRequest;
 import com.zshnb.ballplatform.service.inter.ISportSiteOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.List;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +22,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class SportSiteOrderServiceImpl extends ServiceImpl<SportSiteOrderMapper, SportSiteOrder> implements ISportSiteOrderService {
 
+	@Override
+	public List<SportSiteOrder> listOrders(PageRequest request) {
+		Page<SportSiteOrder> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page).getRecords();
+	}
+
+	@Override
+	public void cancel(int id) {
+		SportSiteOrder sportSiteOrder = getById(id);
+		sportSiteOrder.setDeleted(1);
+		updateById(sportSiteOrder);
+	}
+
+	@Override
+	public void add(AddSportSiteOrderRequest request) {
+		SportSiteOrder sportSiteOrder = new SportSiteOrder();
+		sportSiteOrder.setDeleted(0);
+		BeanUtils.copyProperties(request, sportSiteOrder);
+		save(sportSiteOrder);
+	}
 }

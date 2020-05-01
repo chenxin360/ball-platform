@@ -23,7 +23,7 @@ public class SportItem extends Model<SportItem> {
 
     private String name;
 
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();
 
     public Integer getId() {
         return id;
