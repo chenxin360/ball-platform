@@ -25,4 +25,6 @@ public interface ISportSiteService extends IService<SportSite> {
 	void delete(int id);
 
 	List<SportSite> listSportSites(ListSportSiteRequest request);
+
+	List<SportSite> listSportSites(com.zshnb.ballplatform.request.ListSportSiteRequest request);
 }

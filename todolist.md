@@ -15,6 +15,9 @@
 - [x] /front/order/{type}/{id}
 - [x] /front/order/coach
 - [x] /front/order/sport-site
+- [x] /front/sport-site/list
+- [x] /front/sport-site/{id}
+- [x] /front/sport-item/list
 
 
 ### admin

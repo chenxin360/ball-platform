@@ -51,4 +51,15 @@ public class SportItemServiceImpl extends ServiceImpl<SportItemMapper, SportItem
 		Page<SportItem> page = new Page<>(request.getPageNumber(), request.getPageSize());
 		return page(page, wrapper).getRecords();
 	}
+
+	@Override
+	public List<SportItem> listSportItems(
+		com.zshnb.ballplatform.request.ListSportItemRequest request) {
+		QueryWrapper<SportItem> wrapper = new QueryWrapper<>();
+		if (!request.getName().isEmpty()) {
+			wrapper.eq("name", request.getName());
+		}
+		Page<SportItem> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page, wrapper).getRecords();
+	}
 }

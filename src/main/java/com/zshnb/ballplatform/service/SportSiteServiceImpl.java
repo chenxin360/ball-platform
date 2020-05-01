@@ -53,4 +53,17 @@ public class SportSiteServiceImpl extends ServiceImpl<SportSiteMapper, SportSite
 		Page<SportSite> page = new Page<>(request.getPageNumber(), request.getPageSize());
 		return page(page, wrapper).getRecords();
 	}
+
+	@Override
+	public List<SportSite> listSportSites(com.zshnb.ballplatform.request.ListSportSiteRequest request) {
+		QueryWrapper<SportSite> wrapper = new QueryWrapper<>();
+		if (!request.getName().isEmpty()) {
+			wrapper.eq("name", request.getName());
+		}
+		wrapper.between("person_count", request.getMinPersonCount(), request.getMaxPersonCount());
+		wrapper.le("end_at", request.getEndAt());
+		wrapper.ge("start_at", request.getStartAt());
+		Page<SportSite> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page, wrapper).getRecords();
+	}
 }

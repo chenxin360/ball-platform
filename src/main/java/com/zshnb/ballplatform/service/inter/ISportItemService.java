@@ -26,4 +26,5 @@ public interface ISportItemService extends IService<SportItem> {
 
 	List<SportItem> listSportItems(ListSportItemRequest request);
 
+	List<SportItem> listSportItems(com.zshnb.ballplatform.request.ListSportItemRequest request);
 }
