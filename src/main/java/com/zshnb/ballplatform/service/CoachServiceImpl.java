@@ -4,11 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.mapper.CoachMapper;
-import com.zshnb.ballplatform.request.ListCoachRequest;
+import com.zshnb.ballplatform.request.backend.ListCoachRequest;
 import com.zshnb.ballplatform.service.inter.ICoachService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.List;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -50,5 +49,17 @@ public class CoachServiceImpl extends ServiceImpl<CoachMapper, Coach> implements
 		return page(page, wrapper).getRecords();
 	}
 
-
+	@Override
+	public List<Coach> listCoaches(com.zshnb.ballplatform.request.ListCoachRequest request) {
+		QueryWrapper<Coach> wrapper = new QueryWrapper<>();
+		if (request.getSportItemId() != 0) {
+			wrapper.eq("sport_item_id", request.getSportItemId());
+		}
+		if (!request.getSportLevel().isEmpty()) {
+			wrapper.eq("sport_level", request.getSportLevel());
+		}
+		wrapper.between("price", request.getMinPrice(), request.getMaxPrice());
+		Page<Coach> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page, wrapper).getRecords();
+	}
 }

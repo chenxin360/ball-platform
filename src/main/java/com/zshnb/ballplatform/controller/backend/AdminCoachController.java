@@ -3,12 +3,11 @@ package com.zshnb.ballplatform.controller.backend;
 
 import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
-import com.zshnb.ballplatform.request.ListCoachRequest;
+import com.zshnb.ballplatform.request.backend.ListCoachRequest;
 import com.zshnb.ballplatform.service.inter.ICoachService;
 import com.zshnb.ballplatform.validation.CoachValidation;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

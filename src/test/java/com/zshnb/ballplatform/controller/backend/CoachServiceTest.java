@@ -2,7 +2,7 @@ package com.zshnb.ballplatform.controller.backend;
 
 import com.zshnb.ballplatform.BaseTest;
 import com.zshnb.ballplatform.entity.Coach;
-import com.zshnb.ballplatform.request.ListCoachRequest;
+import com.zshnb.ballplatform.request.backend.ListCoachRequest;
 import com.zshnb.ballplatform.service.inter.ICoachService;
 import java.util.List;
 import org.junit.Test;
