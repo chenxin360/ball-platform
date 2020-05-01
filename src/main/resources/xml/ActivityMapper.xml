@@ -13,4 +13,19 @@
         <result column="sport_item_id" property="sportItemId" />
     </resultMap>
 
+    <select id="findDtosByTheme" resultType="com.zshnb.ballplatform.dto.ActivityDto">
+        select a.id, a.theme, a.content, a.phone, a.person_count, a.excel, si.name as sportItemName
+        from activity a
+        inner join sport_item si si.id = a.sport_item_id
+        <if test="theme != null and theme != ''">
+            where a.theme = #{theme}
+        </if>
+    </select>
+
+    <select id="findDtosById" resultType="com.zshnb.ballplatform.dto.ActivityDto">
+        select a.id, a.theme, a.content, a.phone, a.person_count, a.excel, si.name as sportItemName
+        from activity a
+        inner join sport_item si si.id = a.sport_item_id
+        where a.id = #{id}
+    </select>
 </mapper>

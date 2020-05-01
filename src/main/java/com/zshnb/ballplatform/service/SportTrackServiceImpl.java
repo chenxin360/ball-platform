@@ -1,9 +1,12 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.entity.SportTrack;
 import com.zshnb.ballplatform.mapper.SportTrackMapper;
+import com.zshnb.ballplatform.request.PageRequest;
 import com.zshnb.ballplatform.service.inter.ISportTrackService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +20,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class SportTrackServiceImpl extends ServiceImpl<SportTrackMapper, SportTrack> implements ISportTrackService {
 
+	@Override
+	public void add(SportTrack sportTrack) {
+		save(sportTrack);
+	}
+
+	@Override
+	public List<SportTrack> list(PageRequest request) {
+		Page<SportTrack> page = new Page<>(request.getPageNumber(), request.getPageSize());
+		return page(page).getRecords();
+	}
 }

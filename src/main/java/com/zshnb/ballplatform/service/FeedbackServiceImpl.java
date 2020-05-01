@@ -17,4 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class FeedbackServiceImpl extends ServiceImpl<FeedbackMapper, Feedback> implements IFeedbackService {
 
+	@Override
+	public void add(Feedback feedback) {
+		save(feedback);
+	}
 }

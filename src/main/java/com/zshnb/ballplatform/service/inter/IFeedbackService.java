@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-04-28
  */
 public interface IFeedbackService extends IService<Feedback> {
-
+	void add(Feedback feedback);
 }

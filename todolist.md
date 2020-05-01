@@ -18,6 +18,12 @@
 - [x] /front/sport-site/list
 - [x] /front/sport-site/{id}
 - [x] /front/sport-item/list
+- [x] /front/sport-track/list
+- [x] /front/sport-track/add
+- [x] /front/message/list
+- [x] /front/feedback/add
+- [x] /front/activity/list
+
 
 
 ### admin
@@ -39,3 +45,8 @@
 - [x] GET /backend/sport-site/{id}
 - [x] DELETE /backend/sport-site/{id}
 - [x] /backend/sport-site/list
+- [x] /backend/activity/add
+- [x] /backend/activity/update
+- [x] GET /backend/activity/{id}
+- [x] DELETE /backend/activity/{id}
+- [x] /backend/activity/list
