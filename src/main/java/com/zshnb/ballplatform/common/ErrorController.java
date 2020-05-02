@@ -13,6 +13,7 @@ public class ErrorController extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Object> handler(Exception e, WebRequest webRequest) {
+	    System.out.println(e.getMessage());
     	return handleExceptionInternal(e, Response.error(e.getMessage()),
 		    HttpHeaders.EMPTY, HttpStatus.BAD_REQUEST, webRequest);
     }
