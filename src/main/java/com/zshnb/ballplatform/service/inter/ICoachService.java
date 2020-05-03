@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.backend.ListCoachRequest;
@@ -22,7 +23,7 @@ public interface ICoachService extends IService<Coach> {
 
 	void delete(int id);
 
-	List<Coach> listCoaches(ListCoachRequest request);
+	Response<List<Coach>> listCoaches(ListCoachRequest request);
 
 	List<Coach> listCoaches(com.zshnb.ballplatform.request.ListCoachRequest request);
 }

@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.SportSite;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -24,7 +25,7 @@ public interface ISportSiteService extends IService<SportSite> {
 
 	void delete(int id);
 
-	List<SportSite> listSportSites(ListSportSiteRequest request);
+	Response<List<SportSite>> listSportSites(ListSportSiteRequest request);
 
 	List<SportSite> listSportSites(com.zshnb.ballplatform.request.ListSportSiteRequest request);
 }

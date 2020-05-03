@@ -1,7 +1,9 @@
 package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.SportItem;
 import com.zshnb.ballplatform.mapper.SportItemMapper;
@@ -43,13 +45,14 @@ public class SportItemServiceImpl extends ServiceImpl<SportItemMapper, SportItem
 	}
 
 	@Override
-	public List<SportItem> listSportItems(ListSportItemRequest request) {
+	public Response<List<SportItem>> listSportItems(ListSportItemRequest request) {
 		QueryWrapper<SportItem> wrapper = new QueryWrapper<>();
 		if (!request.getName().isEmpty()) {
 			wrapper.eq("name", request.getName());
 		}
 		Page<SportItem> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page, wrapper).getRecords();
+		IPage<SportItem> itemIPage = page(page, wrapper);
+		return Response.ok(itemIPage.getRecords(), itemIPage.getTotal());
 	}
 
 	@Override

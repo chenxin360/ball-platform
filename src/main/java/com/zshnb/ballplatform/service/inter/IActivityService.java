@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.dto.ActivityDto;
 import com.zshnb.ballplatform.entity.Activity;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -17,7 +18,7 @@ import java.util.List;
  * @since 2020-04-28
  */
 public interface IActivityService extends IService<Activity> {
-	List<Activity> listActivities(ListActivityRequest request);
+	Response<List<Activity>> listActivities(ListActivityRequest request);
 
 	void add(Activity activity);
 
@@ -27,5 +28,5 @@ public interface IActivityService extends IService<Activity> {
 
 	void delete(int id);
 
-	List<ActivityDto> listActivities(com.zshnb.ballplatform.request.backend.ListActivityRequest request);
+	Response<List<ActivityDto>> listActivities(com.zshnb.ballplatform.request.backend.ListActivityRequest request);
 }

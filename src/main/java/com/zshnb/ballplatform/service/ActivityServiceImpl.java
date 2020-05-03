@@ -1,7 +1,9 @@
 package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.dto.ActivityDto;
 import com.zshnb.ballplatform.entity.Activity;
 import com.zshnb.ballplatform.mapper.ActivityMapper;
@@ -26,13 +28,13 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
 	private ActivityMapper activityMapper;
 
 	@Override
-	public List<Activity> listActivities(ListActivityRequest request) {
+	public Response<List<Activity>> listActivities(ListActivityRequest request) {
 		QueryWrapper<Activity> wrapper = new QueryWrapper<>();
 		if (request.getSportItemId() != 0) {
 			wrapper.eq("sport_item_id", request.getSportItemId());
 		}
 		Page<Activity> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page, wrapper).getRecords();
+		return Response.ok(page(page, wrapper).getRecords(), page.getTotal());
 	}
 
 	@Override
@@ -56,9 +58,10 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
 	}
 
 	@Override
-	public List<ActivityDto> listActivities(
+	public Response<List<ActivityDto>> listActivities(
 		com.zshnb.ballplatform.request.backend.ListActivityRequest request) {
 		Page<Activity> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return activityMapper.findDtosByTheme(page, request.getTheme());
+		IPage<ActivityDto> activityIPage = activityMapper.findDtosByTheme(page, request.getTheme());
+		return Response.ok(activityIPage.getRecords(), activityIPage.getTotal());
 	}
 }

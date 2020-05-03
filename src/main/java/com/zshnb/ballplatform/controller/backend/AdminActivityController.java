@@ -91,7 +91,8 @@ public class AdminActivityController {
 
 	@PostMapping("/list")
 	public Response<List<ActivityDto>> list(@RequestBody ListActivityRequest request) {
-		return Response.ok(activityService.listActivities(request));
+
+		return activityService.listActivities(request);
 	}
 
 	@PostMapping("/upload")

@@ -7,10 +7,20 @@ public class Response<T> {
 
 	private T data;
 
+	private long total = 0;
+
 	public static <T> Response<T> ok(T data) {
 		Response<T> response = new Response<>();
 		response.code = 200;
 		response.data = data;
+		return response;
+	}
+
+	public static <T> Response<T> ok(T data, long total) {
+		Response<T> response = new Response<>();
+		response.code = 200;
+		response.data = data;
+		response.total = total;
 		return response;
 	}
 

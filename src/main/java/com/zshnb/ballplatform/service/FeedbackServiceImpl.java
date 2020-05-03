@@ -1,6 +1,8 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Feedback;
 import com.zshnb.ballplatform.mapper.FeedbackMapper;
 import com.zshnb.ballplatform.request.PageRequest;
@@ -26,7 +28,8 @@ public class FeedbackServiceImpl extends ServiceImpl<FeedbackMapper, Feedback> i
 	}
 
 	@Override
-	public List<Feedback> listFeedbacks(PageRequest request) {
-		return page(new Page<>(request.getPageNumber(), request.getPageSize())).getRecords();
+	public Response<List<Feedback>> listFeedbacks(PageRequest request) {
+		IPage<Feedback> iPage = page(new Page<>(request.getPageNumber(), request.getPageSize()));
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 }

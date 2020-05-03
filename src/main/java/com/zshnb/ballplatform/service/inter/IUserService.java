@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -27,5 +28,5 @@ public interface IUserService extends IService<User> {
 
 	void delete(int id);
 
-	List<User> listCoaches(PageRequest request);
+	Response<List<User>> listUsers(PageRequest request);
 }

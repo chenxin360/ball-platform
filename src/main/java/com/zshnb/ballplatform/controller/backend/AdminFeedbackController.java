@@ -35,6 +35,6 @@ public class AdminFeedbackController {
 
 	@PostMapping("/list")
 	public Response<List<Feedback>> list(@RequestBody ListCoachRequest request) {
-		return Response.ok(feedbackService.listFeedbacks(request));
+		return feedbackService.listFeedbacks(request);
 	}
 }

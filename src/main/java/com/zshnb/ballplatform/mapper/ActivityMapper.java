@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.mapper;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zshnb.ballplatform.dto.ActivityDto;
 import com.zshnb.ballplatform.entity.Activity;
@@ -16,6 +17,6 @@ import org.apache.ibatis.annotations.Param;
  * @since 2020-04-28
  */
 public interface ActivityMapper extends BaseMapper<Activity> {
-	List<ActivityDto> findDtosByTheme(Page<?> page, @Param("theme") String theme);
+	IPage<ActivityDto> findDtosByTheme(Page<?> page, @Param("theme") String theme);
 	ActivityDto findDtosById(int id);
 }

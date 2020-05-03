@@ -1,7 +1,9 @@
 package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.mapper.UserMapper;
@@ -57,8 +59,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 	}
 
 	@Override
-	public List<User> listCoaches(PageRequest request) {
+	public Response<List<User>> listUsers(PageRequest request) {
 		Page<User> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page).getRecords();
+		IPage<User> iPage = page(page);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 }

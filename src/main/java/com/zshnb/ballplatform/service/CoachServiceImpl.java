@@ -1,7 +1,9 @@
 package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.mapper.CoachMapper;
 import com.zshnb.ballplatform.request.backend.ListCoachRequest;
@@ -40,13 +42,14 @@ public class CoachServiceImpl extends ServiceImpl<CoachMapper, Coach> implements
 	}
 
 	@Override
-	public List<Coach> listCoaches(ListCoachRequest request) {
+	public Response<List<Coach>> listCoaches(ListCoachRequest request) {
 		QueryWrapper<Coach> wrapper = new QueryWrapper<>();
 		if (!request.getName().isEmpty()) {
 			wrapper.eq("name", request.getName());
 		}
 		Page<Coach> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page, wrapper).getRecords();
+		IPage<Coach> iPage = page(page, wrapper);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 
 	@Override
