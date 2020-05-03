@@ -36,6 +36,6 @@ public class SportTrackController {
 
 	@PostMapping("/list")
 	public Response<List<SportTrack>> list(@RequestBody PageRequest request) {
-		return Response.ok(sportTrackService.list(request));
+		return sportTrackService.list(request);
 	}
 }

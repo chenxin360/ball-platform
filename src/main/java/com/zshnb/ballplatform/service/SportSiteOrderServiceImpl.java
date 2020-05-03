@@ -1,6 +1,8 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.SportSiteOrder;
 import com.zshnb.ballplatform.mapper.SportSiteOrderMapper;
 import com.zshnb.ballplatform.request.AddSportSiteOrderRequest;
@@ -23,9 +25,10 @@ import org.springframework.stereotype.Service;
 public class SportSiteOrderServiceImpl extends ServiceImpl<SportSiteOrderMapper, SportSiteOrder> implements ISportSiteOrderService {
 
 	@Override
-	public List<SportSiteOrder> listOrders(PageRequest request) {
+	public Response<List<SportSiteOrder>> listOrders(PageRequest request) {
 		Page<SportSiteOrder> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page).getRecords();
+		IPage<SportSiteOrder> iPage = page(page);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 
 	@Override

@@ -2,8 +2,10 @@ package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Companion;
 import com.zshnb.ballplatform.mapper.CompanionMapper;
 import com.zshnb.ballplatform.request.ListCompanionRequest;
@@ -36,7 +38,7 @@ public class CompanionServiceImpl extends ServiceImpl<CompanionMapper, Companion
 	}
 
 	@Override
-	public List<Companion> listCompanion(ListCompanionRequest request) {
+	public Response<List<Companion>> listCompanion(ListCompanionRequest request) {
 		QueryWrapper<Companion> wrapper = new QueryWrapper<>();
 		wrapper.eq("user_id", request.getUserId());
 		if (request.getSportItemId() != 0) {
@@ -50,7 +52,8 @@ public class CompanionServiceImpl extends ServiceImpl<CompanionMapper, Companion
 		}
 		wrapper.and(i -> i.between("time", request.getStartAt(), request.getEndAt()));
 		Page<Companion> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page, wrapper).getRecords();
+		IPage<Companion> iPage = page(page, wrapper);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 
 	@Override

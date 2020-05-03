@@ -32,7 +32,7 @@ public class CoachController {
 
 	@PostMapping("/list")
 	public Response<List<Coach>> list(@RequestBody ListCoachRequest request) {
-		return Response.ok(coachService.listCoaches(request));
+		return coachService.listCoaches(request);
 	}
 
 	@GetMapping("/{id}")

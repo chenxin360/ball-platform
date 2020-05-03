@@ -53,7 +53,7 @@ public class CoachServiceImpl extends ServiceImpl<CoachMapper, Coach> implements
 	}
 
 	@Override
-	public List<Coach> listCoaches(com.zshnb.ballplatform.request.ListCoachRequest request) {
+	public Response<List<Coach>> listCoaches(com.zshnb.ballplatform.request.ListCoachRequest request) {
 		QueryWrapper<Coach> wrapper = new QueryWrapper<>();
 		if (request.getSportItemId() != 0) {
 			wrapper.eq("sport_item_id", request.getSportItemId());
@@ -63,6 +63,7 @@ public class CoachServiceImpl extends ServiceImpl<CoachMapper, Coach> implements
 		}
 		wrapper.between("price", request.getMinPrice(), request.getMaxPrice());
 		Page<Coach> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page, wrapper).getRecords();
+		IPage<Coach> iPage = page(page, wrapper);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 }

@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Companion;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.ListCompanionRequest;
@@ -17,7 +18,7 @@ import java.util.List;
 public interface ICompanionService extends IService<Companion> {
 	void uploadCompanion(UploadCompanionRequest request);
 
-	List<Companion> listCompanion(ListCompanionRequest request);
+	Response<List<Companion>> listCompanion(ListCompanionRequest request);
 
 	void deleteCompanion(Integer id);
 }

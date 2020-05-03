@@ -39,7 +39,7 @@ public class CompanionController {
 
 	@PostMapping("/list")
 	public Response<List<Companion>> list(@RequestBody ListCompanionRequest request) {
-		return Response.ok(companionService.listCompanion(request));
+		return companionService.listCompanion(request);
 	}
 
 	@DeleteMapping("/front/companion/{id}")

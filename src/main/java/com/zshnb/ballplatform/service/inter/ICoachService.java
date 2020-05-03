@@ -25,5 +25,5 @@ public interface ICoachService extends IService<Coach> {
 
 	Response<List<Coach>> listCoaches(ListCoachRequest request);
 
-	List<Coach> listCoaches(com.zshnb.ballplatform.request.ListCoachRequest request);
+	Response<List<Coach>> listCoaches(com.zshnb.ballplatform.request.ListCoachRequest request);
 }

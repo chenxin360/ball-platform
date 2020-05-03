@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Bill;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.AddBillRequest;
@@ -17,5 +18,5 @@ import java.util.List;
 public interface IBillService extends IService<Bill> {
 	double addBill(AddBillRequest request);
 
-	List<Bill> listBill(ListBillRequest request);
+	Response<List<Bill>> listBill(ListBillRequest request);
 }

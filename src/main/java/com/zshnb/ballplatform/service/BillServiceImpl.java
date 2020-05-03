@@ -1,7 +1,9 @@
 package com.zshnb.ballplatform.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Bill;
 import com.zshnb.ballplatform.entity.User;
 import com.zshnb.ballplatform.mapper.BillMapper;
@@ -46,11 +48,12 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements IB
 	}
 
 	@Override
-	public List<Bill> listBill(ListBillRequest request) {
+	public Response<List<Bill>> listBill(ListBillRequest request) {
 		QueryWrapper<Bill> queryWrapper = new QueryWrapper<>();
 		queryWrapper.eq("user_id", request.getUserId());
 		Page<Bill> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page, queryWrapper).getRecords();
+		IPage<Bill> iPage = page(page, queryWrapper);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 
 

@@ -1,6 +1,9 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
+import com.zshnb.ballplatform.entity.Coach;
 import com.zshnb.ballplatform.entity.CoachOrder;
 import com.zshnb.ballplatform.mapper.CoachOrderMapper;
 import com.zshnb.ballplatform.request.AddCoachOrderRequest;
@@ -23,9 +26,10 @@ import org.springframework.stereotype.Service;
 public class CoachOrderServiceImpl extends ServiceImpl<CoachOrderMapper, CoachOrder> implements ICoachOrderService {
 
 	@Override
-	public List<CoachOrder> listOrders(PageRequest request) {
+	public Response<List<CoachOrder>> listOrders(PageRequest request) {
 		Page<CoachOrder> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page).getRecords();
+		IPage<CoachOrder> iPage = page(page);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 
 	@Override

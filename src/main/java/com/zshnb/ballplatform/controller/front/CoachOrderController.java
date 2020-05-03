@@ -33,7 +33,7 @@ public class CoachOrderController {
 
 	@PostMapping("/list")
 	public Response<List<CoachOrder>> list(@RequestBody PageRequest request) {
-		return Response.ok(coachOrderService.listOrders(request));
+		return coachOrderService.listOrders(request);
 	}
 
 	@DeleteMapping("/{id}")

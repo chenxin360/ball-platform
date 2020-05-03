@@ -31,6 +31,6 @@ public class MessageController {
 
 	@PostMapping("/list")
 	public Response<List<Message>> list(@RequestBody ListMessageRequest request) {
-		return Response.ok(messageService.listMessages(request));
+		return messageService.listMessages(request);
 	}
 }

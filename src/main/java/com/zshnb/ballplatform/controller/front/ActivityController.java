@@ -65,7 +65,7 @@ public class ActivityController {
 
 	@PostMapping("/list")
 	public Response<List<Activity>> list(@RequestBody ListActivityRequest request) {
-		return Response.ok(activityService.listActivities(request));
+		return activityService.listActivities(request);
 	}
 
 	@PostMapping("/upload")

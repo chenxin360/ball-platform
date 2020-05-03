@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.Message;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.ListMessageRequest;
@@ -15,7 +16,7 @@ import java.util.List;
  * @since 2020-04-28
  */
 public interface IMessageService extends IService<Message> {
-	List<Message> listMessages(ListMessageRequest request);
+	Response<List<Message>> listMessages(ListMessageRequest request);
 
 	void sendMessage(Message message);
 }

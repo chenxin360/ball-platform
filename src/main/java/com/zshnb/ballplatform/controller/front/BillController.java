@@ -38,6 +38,6 @@ public class BillController {
 
 	@PostMapping("/list")
 	public Response<List<Bill>> list(@RequestBody ListBillRequest request) {
-		return Response.ok(billService.listBill(request));
+		return billService.listBill(request);
 	}
 }

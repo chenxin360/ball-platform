@@ -34,7 +34,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
 			wrapper.eq("sport_item_id", request.getSportItemId());
 		}
 		Page<Activity> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return Response.ok(page(page, wrapper).getRecords(), page.getTotal());
+		IPage<Activity> iPage = page(page, wrapper);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 
 	@Override

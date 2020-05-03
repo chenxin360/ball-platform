@@ -1,5 +1,6 @@
 package com.zshnb.ballplatform.service.inter;
 
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.SportTrack;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zshnb.ballplatform.request.PageRequest;
@@ -16,5 +17,5 @@ import java.util.List;
 public interface ISportTrackService extends IService<SportTrack> {
 	void add(SportTrack sportTrack);
 
-	List<SportTrack> list(PageRequest request);
+	Response<List<SportTrack>> list(PageRequest request);
 }

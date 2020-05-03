@@ -1,6 +1,8 @@
 package com.zshnb.ballplatform.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zshnb.ballplatform.common.Response;
 import com.zshnb.ballplatform.entity.SportTrack;
 import com.zshnb.ballplatform.mapper.SportTrackMapper;
 import com.zshnb.ballplatform.request.PageRequest;
@@ -26,8 +28,9 @@ public class SportTrackServiceImpl extends ServiceImpl<SportTrackMapper, SportTr
 	}
 
 	@Override
-	public List<SportTrack> list(PageRequest request) {
+	public Response<List<SportTrack>> list(PageRequest request) {
 		Page<SportTrack> page = new Page<>(request.getPageNumber(), request.getPageSize());
-		return page(page).getRecords();
+		IPage<SportTrack> iPage = page(page);
+		return Response.ok(iPage.getRecords(), iPage.getTotal());
 	}
 }

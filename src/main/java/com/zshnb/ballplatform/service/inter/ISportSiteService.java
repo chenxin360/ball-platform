@@ -27,5 +27,5 @@ public interface ISportSiteService extends IService<SportSite> {
 
 	Response<List<SportSite>> listSportSites(ListSportSiteRequest request);
 
-	List<SportSite> listSportSites(com.zshnb.ballplatform.request.ListSportSiteRequest request);
+	Response<List<SportSite>> listSportSites(com.zshnb.ballplatform.request.ListSportSiteRequest request);
 }

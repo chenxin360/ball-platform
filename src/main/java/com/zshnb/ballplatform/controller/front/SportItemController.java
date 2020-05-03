@@ -30,6 +30,6 @@ public class SportItemController {
 
 	@PostMapping("/list")
 	public Response<List<SportItem>> list(@RequestBody ListSportItemRequest request) {
-		return Response.ok(sportItemService.listSportItems(request));
+		return sportItemService.listSportItems(request);
 	}
 }
